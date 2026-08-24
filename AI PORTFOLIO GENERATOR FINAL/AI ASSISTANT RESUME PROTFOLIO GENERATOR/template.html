@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="{{THEME}}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal Portfolio of {{NAME}} - {{HEADLINE}}">
+  <title>{{NAME}} | Professional Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Clean Professional Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-brand" id="nav-brand">
+        <span class="brand-icon">👤</span>
+        <span>{{NAME}}</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="#hero" class="active">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+      </div>
+      
+      <div class="nav-controls">
+        <a href="#contact-pills" class="btn-cta">
+          <span>Contact Me</span>
+          <span class="cta-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left Hero Column -->
+        <div class="hero-left">
+          <p class="hero-tagline">WELCOME TO MY PORTFOLIO</p>
+          <h1 class="hero-title">
+            Hi, I AM {{NAME}}
+            <span class="hero-headline-span">{{HEADLINE}}</span>
+          </h1>
+          <p class="hero-subtitle">{{SUMMARY}}</p>
+          
+          <a href="#contact-pills" class="btn-cta">
+            <span>Get In Touch</span>
+            <span class="cta-arrow">&gt;</span>
+          </a>
+        </div>
+
+        <!-- Middle Hero Portrait Frame -->
+        <div class="hero-portrait">
+          <div class="hero-portrait-frame">
+            {{PROFILE_AVATAR_HTML}}
+            <div class="review-badge">
+              <span class="review-score">4.9 ★</span>
+              <span>100+ Accomplishments</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Stats Column -->
+        <div class="stats-column">
+          <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div>
+              <div class="stat-number">{{AWARDS_COUNT}}</div>
+              <div class="stat-label">Awards & Certifications</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div>
+              <div class="stat-number">{{PROJECTS_COUNT}}</div>
+              <div class="stat-label">Featured Projects</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎖️</div>
+            <div>
+              <div class="stat-number">{{YEARS_EXPERIENCE}}</div>
+              <div class="stat-label">Experience Level</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Worked With Partner Logos Strip -->
+      <div class="worked-with-strip">
+        <p class="worked-with-title">Worked with & Technologies</p>
+        <div class="partner-logos">
+          <div class="partner-logo-item">⚡ Python & AI</div>
+          <div class="partner-logo-item">🌐 Full-Stack Web</div>
+          <div class="partner-logo-item">☁️ Cloud & API</div>
+          <div class="partner-logo-item">🚀 Agile & DevOps</div>
+          <div class="partner-logo-item">🎨 UI/UX Systems</div>
+        </div>
+      </div>
+
+      <!-- Contact Badges / Links -->
+      <div class="contact-pills" id="contact-pills">
+        {{CONTACT_PILLS}}
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="container">
+
+    <!-- Technical Skills Section -->
+    <section class="section {{SKILLS_HIDDEN}}" id="skills">
+      <div class="section-header">
+        <p class="section-subtitle">MY EXPERTISE</p>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+      <div class="skills-grid" id="skills-grid">
+        {{SKILLS_GRID}}
+      </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section class="section {{EXPERIENCE_HIDDEN}}" id="experience">
+      <div class="section-header">
+        <p class="section-subtitle">QUALIFICATION & CAREER</p>
+        <h2 class="section-title">My Experience & Education</h2>
+      </div>
+
+      <div class="timeline-toggle-bar">
+        <button class="toggle-btn active">💼 Experience & Education Timeline</button>
+      </div>
+
+      <div class="horizontal-timeline" id="experience-timeline">
+        {{EXPERIENCE_TIMELINE}}
+        {{EDUCATION_GRID}}
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="section {{PROJECTS_HIDDEN}}" id="projects">
+      <div class="section-header">
+        <p class="section-subtitle">RECENT PORTFOLIO WORK</p>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        {{PROJECTS_GRID}}
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section {{ACHIEVEMENTS_HIDDEN}}" id="achievements">
+      <div class="section-header">
+        <p class="section-subtitle">HONORS & RECOGNITION</p>
+        <h2 class="section-title">Achievements & Certifications</h2>
+      </div>
+      <div class="skills-grid" id="achievements-list">
+        {{ACHIEVEMENTS_LIST}}
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating AI Recruiter Chatbot Widget -->
+  <div class="ai-chatbot-widget">
+    <button class="chat-trigger-btn" id="chat-trigger">
+      <span>🤖</span>
+      <span>Ask AI About {{FIRST_NAME}}</span>
+    </button>
+
+    <div class="chat-modal-window" id="chat-modal">
+      <div class="chat-header">
+        <div class="chat-title">
+          <span>🤖</span>
+          <span>AI Recruiter Assistant</span>
+        </div>
+        <button class="chat-close-btn" id="chat-close">&times;</button>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg bot">
+          Hi! I am {{FIRST_NAME}}'s AI Recruiter Assistant. Ask me anything about their background, skills, projects, or experience!
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ask a question (e.g. Tell me about Python skills)...">
+        <button class="chat-send-btn" id="chat-send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <p>&copy; <span id="current-year">2026</span> {{NAME}}. Generated with AI-Assisted Resume Portfolio Generator.</p>
+    </div>
+  </footer>
+
+  <script>
+    // AI Chatbot Widget Logic
+    const chatTrigger = document.getElementById('chat-trigger');
+    const chatModal = document.getElementById('chat-modal');
+    const chatClose = document.getElementById('chat-close');
+    const chatSend = document.getElementById('chat-send');
+    const chatInput = document.getElementById('chat-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    if (chatTrigger && chatModal) {
+      chatTrigger.addEventListener('click', () => chatModal.classList.toggle('open'));
+      chatClose.addEventListener('click', () => chatModal.classList.remove('open'));
+
+      async function sendChatMessage() {
+        const query = chatInput.value.trim();
+        if (!query) return;
+
+        // Append user message
+        const userDiv = document.createElement('div');
+        userDiv.className = 'chat-msg user';
+        userDiv.textContent = query;
+        chatMessages.appendChild(userDiv);
+        chatInput.value = '';
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Bot loading message
+        const botDiv = document.createElement('div');
+        botDiv.className = 'chat-msg bot';
+        botDiv.textContent = 'Thinking...';
+        chatMessages.appendChild(botDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+          const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: query })
+          });
+          const data = await res.json();
+          botDiv.textContent = data.reply || 'Sorry, I could not process your question.';
+        } catch (err) {
+          botDiv.textContent = 'AI Assistant offline or server disconnected.';
+        }
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      chatSend.addEventListener('click', sendChatMessage);
+      chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendChatMessage();
+      });
+    }
+  </script>
+
+</body>
+</html>

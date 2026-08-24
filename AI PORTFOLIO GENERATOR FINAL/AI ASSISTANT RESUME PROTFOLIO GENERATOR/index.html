@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Portfolio Generator | Interactive Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="app-header">
+    <div class="logo-area">
+      <div class="logo-icon">🚀</div>
+      <div>
+        <h1 class="app-title">AI Resume Portfolio Generator</h1>
+        <p class="app-subtitle">Powered by Google Gemini API & Python</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <span class="status-badge" id="api-status-badge">
+        <span class="status-dot"></span> API Ready
+      </span>
+      <button class="btn btn-secondary" id="btn-sample">📄 Sample Resume</button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="workspace-container">
+
+    <!-- Left Panel: Input & Controls -->
+    <section class="panel input-panel">
+      <div class="panel-header">
+        <h2>1. Resume & Theme Input</h2>
+        <span class="step-tag">Input</span>
+      </div>
+
+      <!-- 4 Portfolio Theme Selection Options -->
+      <div class="form-group-sm mb-2">
+        <label>🎨 Select Portfolio Theme (4 Custom Designs)</label>
+        <div class="theme-card-grid" id="theme-card-grid">
+          <div class="theme-card-option active" data-theme="dark-lime">
+            <span class="swatch" style="background: #ccff00;"></span>
+            <span class="theme-name">1. Electric Lime (Current)</span>
+          </div>
+          <div class="theme-card-option" data-theme="green-minimalist">
+            <span class="swatch" style="background: #45c926;"></span>
+            <span class="theme-name">2. Green Mono (Photo 1)</span>
+          </div>
+          <div class="theme-card-option" data-theme="orange-vibrant">
+            <span class="swatch" style="background: #ff6b00;"></span>
+            <span class="theme-name">3. Sunset Orange (Photo 2)</span>
+          </div>
+          <div class="theme-card-option" data-theme="cyberpunk-purple">
+            <span class="swatch" style="background: #a855f7;"></span>
+            <span class="theme-name">4. Cyberpunk Violet (Photo 3)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Picture Upload -->
+      <div class="form-group-sm mb-2">
+        <label>📷 Headshot Photo (Optional)</label>
+        <div class="file-upload-bar">
+          <input type="file" id="avatar-input" accept="image/png, image/jpeg" style="display: none;">
+          <button class="btn btn-outline btn-sm" id="btn-upload-avatar">Choose Headshot</button>
+          <span class="file-name-display" id="avatar-filename">No photo selected</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="resume-input">Paste Resume Text or Upload (.pdf, .docx, .txt)</label>
+        <div class="file-upload-bar">
+          <input type="file" id="file-input" accept=".pdf,.docx,.doc,.txt" style="display: none;">
+          <button class="btn btn-outline btn-sm" id="btn-upload">📁 Upload File</button>
+          <span class="file-name-display" id="file-name-display">No file selected</span>
+        </div>
+        <textarea id="resume-input" placeholder="Paste resume text or upload your PDF/Word document..." rows="10"></textarea>
+      </div>
+
+      <div class="action-bar">
+        <button class="btn btn-primary btn-block" id="btn-generate">
+          <span id="btn-text">✨ Generate Web Portfolio</span>
+          <span class="spinner" id="btn-spinner" style="display: none;"></span>
+        </button>
+      </div>
+
+      <!-- Live Error / Log Toast -->
+      <div class="log-banner" id="log-banner" style="display: none;">
+        <span id="log-icon">ℹ️</span>
+        <span id="log-message">Initializing...</span>
+      </div>
+    </section>
+
+    <!-- Right Panel: Live Interactive Preview & ATS Advisor -->
+    <section class="panel preview-panel">
+      <div class="panel-header">
+        <h2>2. Live Preview & ATS Advisor</h2>
+        <div class="preview-actions">
+          <button class="btn btn-secondary btn-sm" id="btn-print-pdf" title="Print or save portfolio as PDF">🖨️ Print PDF</button>
+          <button class="btn btn-outline btn-sm" id="btn-fullscreen" title="Open in new tab">↗️ Fullscreen</button>
+          <button class="btn btn-primary btn-sm" id="btn-download" title="Download portfolio.html">📥 Download portfolio.html</button>
+        </div>
+      </div>
+
+      <!-- Preview Tabs -->
+      <div class="tab-bar">
+        <button class="tab-btn active" id="tab-visual">🖥️ Visual Preview</button>
+        <button class="tab-btn" id="tab-ats">📊 ATS Resume Score</button>
+        <button class="tab-btn" id="tab-code">📄 HTML Code</button>
+        <button class="tab-btn" id="tab-deploy">🚀 Deploy Live</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- Visual iFrame Preview -->
+        <div class="tab-pane active" id="pane-visual">
+          <iframe id="preview-iframe" src="portfolio.html" title="Portfolio Preview"></iframe>
+        </div>
+
+        <!-- ATS Score Analysis Pane -->
+        <div class="tab-pane" id="pane-ats">
+          <div class="ats-card-wrapper">
+            <div class="ats-header-badge">
+              <div class="ats-score-circle" id="ats-score-display">92</div>
+              <div>
+                <h3>AI Resume ATS Score</h3>
+                <p style="color: var(--text-sub); font-size: 0.85rem;">Calculated by Gemini AI based on keyword density & clarity.</p>
+              </div>
+            </div>
+            <div class="ats-details-section">
+              <h4 style="color: #34d399; margin-bottom: 0.5rem;">✅ Key Strengths Found:</h4>
+              <ul id="ats-strengths-list" style="padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-sub);">
+                <li>Clear categorized technical skills section</li>
+                <li>Quantified impact bullet points</li>
+              </ul>
+
+              <h4 style="color: #f59e0b; margin-top: 1rem; margin-bottom: 0.5rem;">💡 Actionable ATS Improvement Tips:</h4>
+              <ul id="ats-tips-list" style="padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-sub);">
+                <li>Add specific metrics to project outcomes</li>
+                <li>Ensure email and phone number are at the very top</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Raw HTML Code Pane -->
+        <div class="tab-pane" id="pane-code">
+          <pre><code id="code-display">Click 'Generate Web Portfolio' to see generated HTML code.</code></pre>
+        </div>
+
+        <!-- Working Deploy Live Pane -->
+        <div class="tab-pane" id="pane-deploy">
+          <div class="deploy-guide-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <h3>🚀 Deploy Your Portfolio Live (100% Free)</h3>
+              <button class="btn btn-primary btn-sm" id="btn-download-zip">📦 Download Deploy Package (.zip)</button>
+            </div>
+
+            <p style="color: var(--text-sub); font-size: 0.85rem; margin-bottom: 1.2rem;">
+              Choose one of the 2 instant deployment methods below to host your portfolio online for free:
+            </p>
+
+            <!-- Option 1: Netlify / Vercel Drag & Drop -->
+            <div class="deploy-option-card">
+              <h4 style="color: #38bdf8; margin-bottom: 0.4rem;">Option 1: Drag & Drop (Netlify / Vercel Drop) - No Coding Required</h4>
+              <ol style="padding-left: 1.2rem; font-size: 0.85rem; color: var(--text-sub); line-height: 1.6;">
+                <li>Click <b>📦 Download Deploy Package (.zip)</b> above to get <code>portfolio_website.zip</code>.</li>
+                <li>Open <b><a href="https://app.netlify.com/drop" target="_blank" style="color: #38bdf8; text-decoration: underline;">app.netlify.com/drop</a></b> in your browser.</li>
+                <li>Drag & drop the zip file onto Netlify. Your portfolio is instantly live on a free <code>https://yourname.netlify.app</code> URL!</li>
+              </ol>
+            </div>
+
+            <!-- Option 2: GitHub Pages Git Commands -->
+            <div class="deploy-option-card" style="margin-top: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                <h4 style="color: #a855f7;">Option 2: Publish via GitHub Pages (Git Terminal)</h4>
+                <button class="btn btn-outline btn-sm" id="btn-copy-git">📋 Copy All Git Commands</button>
+              </div>
+              
+              <div class="code-box" id="git-commands-box">git init
+git add .
+git commit -m "Deploy portfolio website"
+git branch -M main
+git remote add origin https://github.com/your-username/my-portfolio.git
+git push -u origin main</div>
+
+              <p style="color: var(--text-sub); font-size: 0.8rem; margin-top: 0.6rem;">
+                After pushing, go to GitHub Repository &rarr; Settings &rarr; Pages &rarr; Select <b>main</b> branch and click Save!
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

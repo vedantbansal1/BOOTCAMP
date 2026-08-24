@@ -1,0 +1,51 @@
+Alex Rivera
+Computer Science Undergraduate & Full-Stack Developer
+Location: San Francisco, CA
+Email: alex.rivera@example.com
+Phone: +1 (555) 234-5678
+LinkedIn: https://linkedin.com/in/alexrivera-dev
+GitHub: https://github.com/alexrivera-dev
+Portfolio: https://alexrivera.dev
+
+PROFESSIONAL SUMMARY
+Motivated Computer Science senior with a strong background in web development, machine learning algorithms, and cloud deployments. Passionate about building accessible, user-centric web applications and scalable API services. Proven track record in collaborative hackathons and open-source contributions.
+
+TECHNICAL SKILLS
+- Programming Languages: Python, JavaScript, TypeScript, HTML5, CSS3, SQL, C++
+- Frameworks & Libraries: React, Node.js, Express, FastAPI, Flask, Tailwind CSS, Bootstrap
+- Developer Tools & Databases: Git, GitHub, PostgreSQL, MongoDB, Docker, VS Code, Postman
+- Cloud & AI: AWS (S3, EC2), Google Cloud Platform, Gemini API, OpenAI API
+
+EDUCATION
+Bachelor of Science in Computer Science
+California State University, Bay Area | Expected Graduation: May 2025
+- GPA: 3.85 / 4.0 (Dean's Honor List)
+- Coursework: Data Structures & Algorithms, Web Software Engineering, Database Systems, Artificial Intelligence, Computer Networks
+
+WORK EXPERIENCE
+Software Engineering Intern | TechNova Solutions | San Francisco, CA
+June 2024 - August 2024
+- Developed modern RESTful APIs using Python (FastAPI) and PostgreSQL, reducing endpoint latency by 25%.
+- Implemented responsive frontend UI components in React and Tailwind CSS for an internal dashboard used by 50+ engineers.
+- Automated CI/CD deployment pipelines with GitHub Actions and Docker, improving build deployment speed by 40%.
+
+Computer Science Instructional Assistant | California State University | Bay Area, CA
+September 2023 - May 2024
+- Conducted weekly lab sessions and office hours for 120+ students in Intro to Python and Data Structures.
+- Graded coding assignments, provided actionable feedback, and assisted students in debugging complex algorithmic problems.
+
+PROJECTS
+Smart Task Manager (Full-Stack Web App) | Python, Flask, React, PostgreSQL
+- Built a productivity app with real-time collaboration features, user authentication, and task categorization.
+- Designed relational database schema in PostgreSQL and integrated JWT-based secure authentication.
+- Deployed frontend to Vercel and backend to Render, serving 500+ active monthly users.
+
+AI Resume Analyzer & Portfolio Generator | Python, Gemini API, HTML5, CSS3
+- Designed an automated pipeline parsing resume text into structured JSON data via Google Gemini API.
+- Implemented template rendering logic generating responsive HTML portfolios dynamically with custom CSS design tokens.
+- Ensured zero-hallucination outputs through strict prompt constraint validation and safety fallback checks.
+
+ACHIEVEMENTS & CERTIFICATIONS
+- 1st Place Winner - Bay Area Collegiate Hackathon 2024 (Built an AI-driven accessibility tool for visually impaired users).
+- AWS Certified Cloud Practitioner - Amazon Web Services (Issued Nov 2023).
+- Meta Front-End Developer Professional Certificate - Coursera (Issued March 2024).
